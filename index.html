@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>German Elevators - Elevate Your Luxury</title>
+    <style>
+        :root {
+            --primary-color: #0c1d3d;
+            --secondary-color: #c9a87c;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --bg-light: #f5f5f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            margin-left: 10px;
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+            font-style: italic;
+            font-size: 16px;
+            display: block;
+        }
+        
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(197, 199, 202, 0.8), rgba(12, 29, 61, 0.8));
+            background-image: ('assests\derrick-treadwell-m01bajOe8E0-unsplash.jpg') center/cover no-repeat;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            margin-top: 80px;
+        }
+        
+        .hero-content h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        
+        .hero-content p {
+            font-size: 24px;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn:hover {
+            background-color: var(--text-light);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: var(--text-light);
+        }
+        
+        .section-title {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 0 20px;
+        }
+        
+        .about-text p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .product-card {
+            background-color: var(--text-light);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .product-info p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+        
+        /* Components Section */
+        .components {
+            padding: 80px 0;
+            background-color: var(--text-light);
+        }
+        
+        .components-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        
+        .component-item {
+            flex: 0 0 48%;
+            margin-bottom: 30px;
+            background-color: var(--bg-light);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .component-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .component-item p {
+            line-height: 1.6;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+        }
+        
+        .contact-info {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-info p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .contact-details {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .contact-item {
+            margin: 10px 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-item i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+            font-size: 20px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer-content p {
+            margin-bottom: 10px;
+        }
+        
+        .social-links {
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            color: var(--text-light);
+            margin: 0 10px;
+            font-size: 20px;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-size: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Responsive Styles */
+        @media screen and (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
+            
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                padding: 20px;
+                display: none;
+            }
+            
+            nav.show {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .hero-content h2 {
+                font-size: 36px;
+            }
+            
+            .hero-content p {
+                font-size: 18px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-text, .about-image {
+                flex: none;
+                width: 100%;
+                margin-bottom: 30px;
+            }
+            
+            .component-item {
+                flex: 0 0 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <h1>GermanElevators <span>elevate your luxury</span></h1>
+            </div>
+            <button class="nav-toggle" id="navToggle">☰</button>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#components">Components</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h2>Elevate Your Building's Efficiency</h2>
+            <p>Experience premium vertical transportation solutions with German engineering precision</p>
+            <a href="#products" class="btn">Explore Solutions</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Since 2023, German Elevators has been a Government Approved Company in Manufacturing, sale, services & Maintenance of elevators. We are leading with over 50 satisfied customers and a team of highly motivated, talented, trained and experienced personnel committed to giving you their best services.</p>
+                    <p>We are working with Government sector and top most builders in Uttar Pradesh & outside. Above all, German Elevators provides Vertical Transport Solutions through a wide product range of Home Elevator, Passenger, Hospital, Freight, Dumbwaiter and Scenic Elevators.</p>
+                    <p>Company Having Corporate Office in Lucknow, Uttar Pradesh, and delivering our valuable services in Kanpur, Agra, Varanasi, Gorakhpur, Noida. We assure the highest level of satisfaction to our clients in the concerned industrial sphere of Vertical transportation. The intact over is for a very affordable and Economical price without comprising on the quality.</p>
+                </div>
+                <div class="about-image">
+                    <img src="assests\Screenshot 2025-05-01 121306.png" alt="German Elevators Building">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="products">
+        <div class="container">
+            <h2 class="section-title">Our Products</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="assests\Screenshot 2025-05-01 121343.png" alt="Automatic Door Elevators">
+                    </div>
+                    <div class="product-info">
+                        <h3>Automatic Door Elevators</h3>
+                        <p>High-performance elevators with automatic door systems for commercial and residential buildings.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="assests\Screenshot 2025-05-01 121409.png" alt="Manual Door Elevators">
+                    </div>
+                    <div class="product-info">
+                        <h3>Manual Door Elevators</h3>
+                        <p>Reliable and cost-effective solutions with manual door operations for various requirements.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="assests\Screenshot 2025-05-01 121433.png" alt="Hospital Elevators">
+                    </div>
+                    <div class="product-info">
+                        <h3>Hospital Elevators</h3>
+                        <p>Specialized elevators designed for healthcare facilities with enhanced safety features.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="assests\Screenshot 2025-05-01 121501.png" alt="Capsule Elevators">
+                    </div>
+                    <div class="product-info">
+                        <h3>Capsule Elevators</h3>
+                        <p>Modern and aesthetically pleasing elevators with panoramic views for luxury buildings.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="assests\Screenshot 2025-05-01 121528.png" alt="Hydraulic Elevators">
+                    </div>
+                    <div class="product-info">
+                        <h3>Hydraulic Elevators</h3>
+                        <p>Smooth and efficient hydraulic elevator systems for various applications.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="assests\Screenshot 2025-05-01 121555.png" alt="Gearless Motor Elevators">
+                    </div>
+                    <div class="product-info">
+                        <h3>Gearless Motor Elevators</h3>
+                        <p>Energy-efficient elevators with permanent magnet gearless technology, saving up to 40% power.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="components" class="components">
+        <div class="container">
+            <h2 class="section-title">Elevator Components</h2>
+            <div class="components-container">
+                <div class="component-item">
+                    <h3>Range of Cabins</h3>
+                    <p>German Elevator System cabins make a big impression on passengers. They reflect the building's decor and your commitment to tenant comfort with premium materials and customizable options.</p>
+                </div>
+                <div class="component-item">
+                    <h3>Types of Auto Doors</h3>
+                    <p>We offer various auto door options including Mild Steel Small Vision Door Panels, providing both functionality and aesthetic appeal for your elevator systems.</p>
+                </div>
+                <div class="component-item">
+                    <h3>Gearless Motor Systems</h3>
+                    <p>German Elevators Systems Permanent Magnet Gearless Device is inspired with flair to suit your particular idea with 40% power saving compared to conventional systems.</p>
+                </div>
+                <div class="component-item">
+                    <h3>Passenger & Service Elevators</h3>
+                    <p>Specialized components designed for both passenger comfort and service efficiency, with durable materials and advanced technology.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-info">
+                <p>If you have any query, please feel free to contact us. We are always there to serve you with the best elevator solutions for your building needs.</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i>📍</i>
+                        <span>643M/811, Aziz Nagar, Madiyaon, Sitapur Road, Lucknow-226021. (U.P.)</span>
+                    </div>
+                    <div class="contact-item">
+                        <i>📞</i>
+                        <span>7355070231</span>
+                    </div>
+                    <div class="contact-item">
+                        <i>✉️</i>
+                        <span>german.elevators@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2025 German Elevators. All Rights Reserved.</p>
+            <p>Elevate Your Luxury</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook">📱</a>
+                <a href="#" aria-label="Instagram">📷</a>
+                <a href="#" aria-label="LinkedIn">💼</a>
+                <a href="#" aria-label="Twitter">🐦</a>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#home" class="back-to-top" id="backToTop">↑</a>
+
+    <script>
+        // Mobile Navigation Toggle
+        const navToggle = document.getElementById('navToggle');
+        const mainNav = document.getElementById('mainNav');
+        
+        navToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('show');
+        });
+        
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile nav if open
+                    if (mainNav.classList.contains('show')) {
+                        mainNav.classList.remove('show');
+                    }
+                }
+            });
+        });
+        
+        // Back to Top Button
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+        
+        // Product Animation on Scroll
+        const productCards = document.querySelectorAll('.product-card');
+        
+        window.addEventListener('scroll', () => {
+            productCards.forEach(card => {
+                const cardPosition = card.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (cardPosition < screenPosition) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        });
+        
+        // Initialize with some styles for animation
+        productCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.5s ease';
+        });
+    </script>
+</body>
+</html>
